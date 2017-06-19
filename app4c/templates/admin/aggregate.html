@@ -1,0 +1,27 @@
+{% extends 'admin/master.html' %}
+
+{% block body %}
+<table>
+    {% if data %}
+    <tr>
+        {% for key in data[0].keys() %}
+        <th>{{key}}</th>
+        {% endfor %}
+    </tr>
+    {% for item in data %}
+        <tr>
+            {% for key,value in item.items() %}
+            <td>{{ value }}</td>
+            {% endfor %}
+        </tr>
+    {% endfor %}
+    {% else %}
+        <p>No Data</p>
+    {% endif %}
+</table>
+    {% if page_links %}
+        {% for num,link in page_links %}
+            <a href="{{ link }}">{{ num }}</a>
+        {% endfor %}
+    {% endif %}
+{% endblock %}
